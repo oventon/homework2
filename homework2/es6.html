@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+</body>
+<script type="text/javascript">
+function Man(){
+	this.name = ['zbl'];
+}
+Man.prototype = {
+	del:function(x){
+		for(var i in this.name){
+			if(this.name[i] == x){
+				this.name[i] = null;
+			}
+		}
+	},
+	add:function(x){
+		this.name.push(x);
+	},
+	get:function(){
+		return this.name;
+	},
+	change:function(x,y){
+		for(var i in this.name){
+			if(this.name[i] == x){
+				this.name[i] = y;
+			}
+		}
+	}
+}
+
+var friend = new Man();
+var parent = new Man();
+var grandparent = new Man();
+var brother = new Man();
+var girlfriend = {
+	name:"llp"
+}
+function Person({friend,parent,grandparent,brother,girlfriend}){
+	this.friend = friend;
+	this.parent = parent;
+	this.grandparent = parent;
+	this.brother = brother;
+	this.girlfriend = Object.freeze(girlfriend);
+}
+
+Person.prototype = {
+	sign:"hello,world",
+	changesign:function(x){
+		// var that = this;
+		this.sign = x;
+		// var timer = function(){
+		// 	that.sign = x;
+		// };
+		// setTimeout(timer,1000);	
+	}
+}
+
+var a = new Person({friend,parent,grandparent,brother,girlfriend});
+
+
+
+var fri = new Man();
+console.log(fri.name);
+fri.add('kjj');
+console.log(fri.name);
+fri.change('kjj','wyz');
+console.log(fri.name);
+for(var i in a){
+	console.log(a[i].name);
+}
+console.log(a.girlfriend.name);
+a.girlfriend.name = "zl";
+console.log(a.girlfriend.name);
+console.log(a.sign);
+a.changesign("love");
+console.log(a.sign);
+
+</script>
+</html>
